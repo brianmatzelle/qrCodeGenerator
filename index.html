@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Website to create QR codes from text">
+    <link href="assets/css/index.css" rel="stylesheet">
+    <script defer src="assets/js/index.js"></script>
+    <script src="assets/js/qrcode.min.js"></script>
+    <script src="assets/js/html2canvas.js"></script>
+    <title>QR Code</title>
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="qr-container">
+            <label id="label">Enter link to create QR code:</label><br>
+            <input type="text" id="submitText" autocomplete="off" autofocus="on"><br>
+            <button onclick="makeContent()" class="btn" type="button" id="submitButton">submit</button>
+            <div class="hide" id="qrcode"></div>
+        </div>
+        <div class="bottom-container">
+            <button onclick="printContent()" type="button" class="btn hide" id="print-button">print</button>
+            <button onclick="downloadContent()" type="button" class="btn hide" id="download-button">download</button>        </div>
+    </div>
+</body>
+</html>

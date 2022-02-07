@@ -1,14 +1,15 @@
 // const html2canvas = require("./html2canvas");
 
 var qrcode = new QRCode(document.getElementById("qrcode"));
-const container = document.getElementById('container');
-const qrContainer = document.getElementById('qrcode');
-const bottomContainer = document.getElementById('bottom-container');
+
+// html id list
+const container = document.getElementById('container'); // container with everything, only will be hidden when print is called. Do not touch otherwise.
+const qrContainer = document.getElementById('qrcode');  // actual QR code
+const bottomContainer = document.getElementById('bottom-container');    // container for print and download buttons
 const printButton = document.getElementById('print-button');
 const downloadButton = document.getElementById('download-button');
-const returnHome = document.getElementById('return-home');
 
-var userData;       // will be for downloading later
+var userData;       // global variables will be for downloading later
 var src;
 
 function makeContent(){         // function for making the QR Code
@@ -24,16 +25,15 @@ function makeContent(){         // function for making the QR Code
         return;
     }
     
-    qrContainer.classList.remove('hide');
+    qrContainer.classList.remove('hide');       // show QR code and bottom container
     printButton.classList.remove('hide');
     downloadButton.classList.remove('hide');
 
-    qrcode.makeCode(userData);
-    src = qrContainer.children[0].toDataURL("image/png");
-    console.log(src);
+    qrcode.makeCode(userData);      // make QR code with user input
+    src = qrContainer.children[0].toDataURL("image/png");       // actual image data---stored in src
 }
 
-function printContent() {
+function printContent() {       // print function---hides everything except QR code, then prints
     var restorePage = document.body.innerHTML;
     var printContent = qrContainer.innerHTML;
     document.body.innerHTML = printContent;
@@ -41,7 +41,7 @@ function printContent() {
     document.body.innerHTML = restorePage;
 }
 
-function downloadContent() {
+function downloadContent() {        // download function---creates "a" in HTML, then downloads src content
     var a = document.createElement("a");
     a.href = src;
     a.download = userData + ".png";

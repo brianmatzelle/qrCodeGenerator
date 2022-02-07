@@ -1,3 +1,6 @@
+$(document).ready(function() {      // JQuery code
+    
+});
 var qrcode = new QRCode(document.getElementById("qrcode"));
 
 // html id list

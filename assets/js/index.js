@@ -1,5 +1,3 @@
-// const html2canvas = require("./html2canvas");
-
 var qrcode = new QRCode(document.getElementById("qrcode"));
 
 // html id list
